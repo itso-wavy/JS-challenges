@@ -25,8 +25,10 @@
 <body>
   <main class="product">
     <figure class="col">
-      <img src="images/image-product-desktop.jpg" alt="Gabrielle Essence Eau De Parfum" class="fig-img-desktop">
-      <img src="images/image-product-mobile.jpg" alt="Gabrielle Essence Eau De Parfum" class="fig-img-mobile">
+      <picture>
+        <source media="(max-width: 700px)" srcset="images/image-product-desktop.jpg">
+        <img src="images/image-product-desktop.jpg" alt="Gabrielle Essence Eau De Parfum" class="fig-img">
+      </picture>
     </figure>
     <figcaption class="product-figcapt col">
       <p class="product-tag">perfume</p>

@@ -38,18 +38,15 @@ body {
   display: flex;
   background-color: var(--white-color);
   border-radius: .5em;
+  overflow: hidden;
 }
 
 .col {
   width: 50%;
 }
 
-.fig-img-desktop {
+.fig-img {
   border-radius: .5em 0 0 .5em;
-}
-
-.fig-img-mobile {
-  display: none;
 }
 
 .product-figcapt {
@@ -121,14 +118,4 @@ body {
   .col {
     width: 100%;
   }
-
-  .fig-img-desktop {
-    display: none;
-  }
-
-  .fig-img-mobile {
-    display: inline-block;
-    border-radius: .5em .5em 0 0;
-  }
-
 }
