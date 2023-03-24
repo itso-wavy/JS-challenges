@@ -112,9 +112,9 @@ body {
   background-color: var(--hover-color);
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .product {
-    width: 80%;
+    width: 70%;
     min-width: 375px;
     flex-direction: column;
   }
