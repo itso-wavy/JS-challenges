@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Montserrat:wght@500;700&display=swap');
+
+
+:root {
+  --cyan-color: hsl(158, 36%, 37%);
+  --hover-color: #1a4031;
+  --cream-color: hsl(30, 38%, 92%);
+  --blue-color: hsl(212, 21%, 14%);
+  --grayish-color: hsl(228, 12%, 48%);
+  --white-color: hsl(0, 0%, 100%)
+}
+
+*,
+*::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+body {
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--cream-color);
+  max-width: 1440px;
+  color: var(--grayish-color);
+}
+
+.product {
+  margin: 130px auto 30px;
+  width: 40%;
+  min-width: 600px;
+  display: flex;
+  background-color: var(--white-color);
+  border-radius: .5em;
+}
+
+.col {
+  width: 50%;
+}
+
+.fig-img-desktop {
+  border-radius: .5em 0 0 .5em;
+}
+
+.fig-img-mobile {
+  display: none;
+}
+
+.product-figcapt {
+  padding: 2.3em;
+}
+
+.product-tag {
+  text-transform: uppercase;
+  letter-spacing: .3em;
+}
+
+.product-tit {
+  font-family: 'Fraunces', serif;
+  color: var(--blue-color);
+  font-size: 2rem;
+  margin: .8em 0;
+}
+
+.product-desc {
+  line-height: 1.5em;
+}
+
+.product-price {
+  display: flex;
+  margin: 1em 0;
+  align-items: center;
+}
+
+.price-discount {
+  color: var(--cyan-color);
+  font-size: 2rem;
+  font-family: 'Fraunces', serif;
+  margin-right: .8em;
+}
+
+.price-regular {
+  text-decoration: 1px line-through solid;
+  font-size: .9em;
+}
+
+.btn-add {
+  border: none;
+  background-color: var(--cyan-color);
+  color: var(--white-color);
+  width: 100%;
+  padding: 1.2em 0;
+  border-radius: .6em;
+  letter-spacing: 0.1em;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.btn-icon {
+  margin-right: 1em;
+  vertical-align: -.2em;
+}
+
+.btn-add:hover,
+.btn-add:focus {
+  background-color: var(--hover-color);
+}
+
+@media (max-width: 650px) {
+  .product {
+    width: 80%;
+    min-width: 375px;
+    flex-direction: column;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .fig-img-desktop {
+    display: none;
+  }
+
+  .fig-img-mobile {
+    display: inline-block;
+    border-radius: .5em .5em 0 0;
+  }
+
+}
