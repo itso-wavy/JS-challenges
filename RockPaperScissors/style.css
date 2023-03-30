@@ -1,0 +1,34 @@
+form {
+  margin: 100px auto;
+  width: 500px;
+  height: 300px;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: #d2e0f4;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+button {
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px 5px 5px #214a8733, inset 1px 1px 5px 1px #d1dff3;
+  cursor: pointer;
+}
+
+button:focus,
+button:hover {
+  background-color: #f4ffe8;
+  opacity: .75;
+}
+
+h1 {
+  width: 150px;
+  margin: 0 auto;
+  text-align: center;
+}
