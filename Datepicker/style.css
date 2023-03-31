@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+table,
+thead {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+}
+table {
+  width: 100%;
+}
+td {
+  cursor: pointer;
+}
+.container {
+  width: 250px;
+}
+#input_date,
+#div_calendar {
+  width: 100%;
+}
+#input_year,
+#input_month {
+  width: 40%;
+}
+.select-box {
+  display: flex;
+  justify-content: space-between;
+}
