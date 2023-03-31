@@ -14,6 +14,7 @@
   - [x] calendar 내용 바뀌면 재렌더링 하기
 - [x] day 누르면 input 업데이트하고 calendar 숨기기
 
+---
 
 ```mermaid
   flowchart TD
