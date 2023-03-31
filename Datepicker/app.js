@@ -57,11 +57,15 @@ const changeYearMonth = (year, month) => {
   renderCalendar(calendar_arr);
 };
 
+const updateInput = (year, month) => {
+  input_year.value = year;
+  input_month.value = month;
+  changeYearMonth(year, month);
+};
+
 const changeYear = () => {
   current_year = input_year.value;
-  input_year.value = current_year;
-  input_month.value = current_month;
-  changeYearMonth(current_year, current_month);
+  updateInput(current_year, current_month);
 };
 
 const changeMonth = diff => {
@@ -73,9 +77,7 @@ const changeMonth = diff => {
     ((current_year = current_year - 1), (current_month = 12));
   current_month == 13 &&
     ((current_year = current_year + 1), (current_month = 1));
-  input_year.value = current_year;
-  input_month.value = current_month;
-  changeYearMonth(current_year, current_month);
+  updateInput(current_year, current_month);
 };
 
 input_year.value = current_year;
