@@ -20,9 +20,9 @@ const checkLeapYear = year => {
 };
 
 const setDate = day => {
-  current_month = current_month.toString().padStart(2, 0);
+  let month = current_month.toString().padStart(2, 0);
   day = day.toString().padStart(2, 0);
-  input_date.value = `${current_year}-${current_month}-${day}`;
+  input_date.value = `${current_year}-${month}-${day}`;
   div_calendar.style.display = 'none';
 };
 
