@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dateformatter</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+    span {
+      display: inline-block;
+      box-sizing: border-box;
+      min-width: 170px;
+      padding: 20px;
+      text-align: left;
+      background-color: #efefef;
+    }
+    input {
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <input type="date" id="picked_input">
+      ~
+      <input type="date" id="current_input" disabled>
+    </div>
+    <div>
+      <span>🇰🇷🌶️ 
+        <strong id="kr_span">YYYY-MM-DD</strong>
+      </span>
+      <span>🇺🇸🦅 
+        <strong id="us_span">MM-DD-YYYY</strong>
+      </span>
+      <span>🇬🇧💂‍♂️ 
+        <strong id="gb_span">DD-MM-YYYY</strong>
+      </span>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
