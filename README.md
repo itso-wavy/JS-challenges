@@ -11,6 +11,8 @@ in this repo...
 * [Dateformatter 🔗](https://itso-wavy.github.io/JS-challenges/Dateformatter/index.html)
   [README](https://github.com/itso-wavy/JS-challenges/tree/main/Dateformatter) 
 
+* [IntegerInput 🔗](https://itso-wavy.github.io/JS-challenges/IntegerInput/index.html)
+
 * [RockPaperScissors 🔗](https://itso-wavy.github.io/JS-challenges/RockPaperScissors/index.html)
   
 * [card-component 🔗](https://itso-wavy.github.io/JS-challenges/product-preview-card-component-main/index.html) (CSS only)
