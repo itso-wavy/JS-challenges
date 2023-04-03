@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Currencyformatter</title>
+  <style>
+    #form {
+      background-color: #efefef;
+      padding: 3em;
+      width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #result {
+      height: 10px;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <form action="#" id="form">
+    <select id="country">
+      <option value="kr">🇰🇷</option>
+      <option value="us">🇺🇸</option>
+      <option value="eu">🇪🇺</option>
+    </select>
+    <input type="number" id="amount" step="0.001" placeholder="금액을 입력해주세요">
+    <button id="button">format</button>
+    <p id="result"></p>
+  </form>
+  <script src="app.js"></script>
+</body>
+</html>

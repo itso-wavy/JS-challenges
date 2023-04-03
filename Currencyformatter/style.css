@@ -1,0 +1,7 @@
+.result {
+  /* display: flow-root; */
+  height: 50px;
+  border: 1px solid gold;
+  color: gold;
+  font-weight: bold;
+}
