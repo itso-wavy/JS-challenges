@@ -1,6 +1,6 @@
 # Datepicker
 
-🔗 [링크](https://itso-wavy.github.io/JS_challenges/Datepicker/index.html)
+🔗 [링크](https://itso-wavy.github.io/JS-challenges/Datepicker/index.html)
 
 - [x] input 누르면 calendar display를 토글하기
 - [x] 현재 날짜 year, month로 기본 세팅
