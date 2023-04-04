@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/css/style.css">
+  <title>ProductCard-sneaker-air-max</title>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <!-- ===== NAV ===== -->
+    <nav class="nav grid">
+      <h1 class="nav__logo">
+        <a href="#">
+          <img src="assets/icons/nike-logo.svg" alt="">
+        </a>
+      </h1>
+
+      <button class="nav__toggle" id="nav-toggle">
+        <img src="assets/icons/icon-menu.svg" alt="nike">
+      </button>
+
+      <button class="nav__cart">
+        <img src="assets/icons/shopping-bag.svg" alt="">
+      </button>
+
+      <!-- ===== NAV LIST ===== -->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link">MEN</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">WOMEN</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">KIDS</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">CUSTIOMIZE</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">SALE</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main grid">
+    <div class="home">
+      <!-- ===== SNEAKER ===== -->
+      <div class="sneaker">
+        <div class="sneaker__figure">
+          <img src="assets/img/NikeAirMaxMotion2.png" alt="nike air max motion2" class="sneaker__img show" color="#A29596">
+          <img src="assets/img/NikeAirMax Motion2black.png" alt="nike air max motion2 black" class="sneaker__img" color="#111111">
+        </div>
+        <div class="sneaker__palette">
+          <span class="sneaker__color sneaker__colors-one active" primary="#A29596" color="#A29596"></span>
+          <span class="sneaker__color sneaker__colors-two " primary="#111111" color="#111111"></span>
+        </div>
+      </div>
+
+      <!-- ===== INFORMATION ===== -->
+      <div class="info">
+        <!-- ===== FIGCAPTION ===== -->
+        <div class="figcaption">
+          <span class="figcaption__subtitle">Nike</span>
+          <h2 class="figcaption__title">Air Max Motion 2</h2>
+          <p>They combine breathable mesh without seams for a traditional style.</p>
+        </div>
+
+        <!-- ===== ACTIONS ===== -->
+        <div class="actions">
+          <!-- ===== SIZE ===== -->
+          <div class="size">
+            <p class="size__title">Sizes</p>
+            <ul class="size__list">
+              <li class="size__item active"><button>8.5</button></li>
+              <li class="size__item"><button>9</button></li>
+              <li class="size__item"><button>9.5</button></li>
+            </ul>
+          </div>
+          <!-- ===== QUANTITY ===== -->
+          <div class="quantity">
+            <h3 class="quantity__title">Qty.</h3>
+            <div class="quantity__content">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PRICE ===== -->
+        <div class="price">
+          <p class="price__title">&99.00</p>
+          <a href="#" class="price__button">ADD TO CART</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="src/js/app.js"></script>
+</body>
+</html>
