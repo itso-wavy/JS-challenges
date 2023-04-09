@@ -5,29 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon-32x32.png">
   <title>Frontend Mentor | Product preview card component</title>
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
 
 <body>
   <main class="product">
     <figure class="col">
       <picture>
-        <source media="(max-width: 700px)" srcset="images/image-product-desktop.jpg">
-        <img src="images/image-product-desktop.jpg" alt="Gabrielle Essence Eau De Parfum" class="fig-img">
+        <source media="(max-width: 700px)" srcset="src/images/image-product-desktop.jpg">
+        <img src="src/images/image-product-desktop.jpg" alt="Gabrielle Essence Eau De Parfum" class="fig-img">
       </picture>
     </figure>
     <figcaption class="product-figcapt col">
@@ -44,7 +32,7 @@
         <strong class="price-discount">$149.99</strong>
         <p class="price-regular">$169.99</p>
       </div>
-      <button class="btn-add"><img src="images/icon-cart.svg" alt="" class="btn-icon">Add to Cart</button>
+      <button class="btn-add"><img src="src/images/icon-cart.svg" alt="" class="btn-icon">Add to Cart<span class="product-qty">0</span></button>
     </figcaption>
   </main>
 
@@ -52,6 +40,9 @@
     Challenge by <a href="#" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">wavy</a>.
   </footer>
+
+  <script src="src/js/app.js"></script>
+
 </body>
 
 </html>
