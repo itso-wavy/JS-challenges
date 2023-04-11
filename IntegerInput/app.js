@@ -19,7 +19,7 @@ const checkInt = e => {
       !(48 <= e.keyCode && e.keyCode <= 57) &&
       !(97 <= e.keyCode && e.keyCode <= 105)
     )
-      e.preventDefault();
+      e.preventDefault(); // keyup으로 이어지지 않도록 이벤트 중단
   }
 };
 
