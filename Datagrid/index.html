@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/8c6d8c8f82.js" crossorigin="anonymous"></script>
+  <title>Datagrid</title>
+</head>
+<body class="va-top">
+  <div class="w-full p-3 text-center">
+    <input type="text" id="search" class="bg-slate-700 text-white font-bold py-3 px-5 mr-1 rounded-md" placeholder="Search the menu...">
+    <button class="hover:bg-slate-300  rounded-md" id="search-btn"><i class="fa-solid fa-magnifying-glass py-4 px-3"></i></button>
+  </div>
+  <table class="w-full text-center border border-black ">
+    <thead class="bg-zinc-400 ">
+      <tr>
+        <th class="hover:bg-zinc-500 border border-black p-3 cursor-pointer w-20" data-sort-key="id">index <i class="fa-solid fa-up-down text-rose-200"></i></th>
+        <th class="hover:bg-zinc-500 border border-black p-3 cursor-pointer" data-sort-key="title">menu <i class="fa-solid fa-up-down text-rose-200"></i></th>
+        <th class="hover:bg-zinc-500 border border-black p-3 cursor-pointer" data-sort-key="image">image <i class="fa-solid fa-up-down text-rose-200"></i></th>
+        <th class="hover:bg-zinc-500 border border-black p-3 cursor-pointer" data-sort-key="description">description <i class="fa-solid fa-up-down text-rose-200"></i></th>
+        <th class="hover:bg-zinc-500 border border-black p-3 cursor-pointer" data-sort-key="ingredients">ingredients <i class="fa-solid fa-up-down text-rose-200"></i></th>
+      </tr>
+    </thead>
+    <tbody id="tb"></tbody>
+  </table>
+  <div class="pagination"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
