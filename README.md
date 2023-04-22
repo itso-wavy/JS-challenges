@@ -11,10 +11,14 @@ in this repo...
 - [Dateformatter 🔗](https://itso-wavy.github.io/JS-challenges/Dateformatter/index.html)
   [README](https://github.com/itso-wavy/JS-challenges/tree/main/Dateformatter)
 
-- [IntegerInput 🔗](https://itso-wavy.github.io/JS-challenges/IntegerInput/index.html)
+- [NumberOnlyInput](https://itso-wavy.github.io/JS-challenges/NumberOnlyInput/index.html)
 
-- [RockPaperScissors 🔗](https://itso-wavy.github.io/JS-challenges/RockPaperScissors/index.html)
+- [RockPaperScissors](https://itso-wavy.github.io/JS-challenges/RockPaperScissors/index.html)
 
-- [card-component 🔗](https://itso-wavy.github.io/JS-challenges/product-preview-card-component-main/index.html)
+- [i18n](https://itso-wavy.github.io/JS-challenges/i18n/index.html)
 
-- [product-page: sneaker-air-max](https://itso-wavy.github.io/JS-challenges/ProductCard-sneaker-air-max/index.html)
+- [card-component](https://itso-wavy.github.io/JS-challenges/product-preview-card-component-main/index.html)
+
+- [Datagrid](https://itso-wavy.github.io/JS-challenges/Datagrid/index.html)(ing...)
+
+- [product-page: sneaker-air-max](https://itso-wavy.github.io/JS-challenges/ProductCard-sneaker-air-max/index.html)(ing...)

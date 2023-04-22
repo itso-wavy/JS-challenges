@@ -204,8 +204,13 @@ body {
 }
 
 /* ===== INFORMATION ===== */
+.info {
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+}
+
 .figcaption {
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
 }
 .figcaption__subtitle {
   font-weight: var(--font-weight-bold);
