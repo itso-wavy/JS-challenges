@@ -25,7 +25,8 @@
     }
 
     #form {
-      width: 400px;
+      width: 500px;
+      box-sizing: border-box;
       margin: 0 auto;
       border: 8px dashed #90ebdb;
       border-radius: 1em;
@@ -37,6 +38,7 @@
     }
 
     #list {
+      width: 100%;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -56,13 +58,13 @@
       padding: .6em .7em;
     }
 
-    label {
-      line-height: 2em;
+    select {
+      min-width: 49%;
     }
 
-    label[for="types"],
-    label[for="level"] {
-      font-weight: bolder;
+    label {
+      line-height: 2em;
+      white-space: nowrap;
     }
 
     #display {
@@ -127,9 +129,6 @@
         this.render()
       }
       render() {
-        if (this.id === 'level') {
-          this.$input.value = `Lv`
-        }
         this.$wrapper.append(this.$label)
         this.$wrapper.append(this.$input)
         $list.prepend(this.$wrapper)
@@ -137,15 +136,18 @@
     }
 
     class Option {
-      constructor(txt) {
+      constructor(txt, isDefault) {
         const $option = document.createElement('option')
         $option.value = txt
         $option.textContent = (txt === '구현'
           ? `구현(* 문제 유형을 잘 모르겠다면 선택)`
-          : txt === '기타'
-            ? `기타(* 직접 유형을 입력해주세요)`
+          : txt === '###'
+            ? isDefault
+              ? '==='
+              : `기타(* 직접 유형을 입력해주세요)`
             : txt)
 
+        $option.selected = isDefault
         this.$option = $option
         this.render()
       }
@@ -162,6 +164,7 @@
         $label.htmlFor = id
         $label.textContent = txt
         $select.id = id
+        this.id = id
         this.$label = $label
         this.$select = $select
         this.$wrapper = $wrapper
@@ -171,21 +174,38 @@
       render() {
         select = this.$select
 
-        new Option('해시')
-        new Option('스택큐')
-        new Option('DFSBFS')
-        new Option('힙')
-        new Option('완전탐색')
-        new Option('그리디')
-        new Option('다이나믹')
-        new Option('트리')
-        new Option('그래프')
-        new Option('투포인터슬라이딩윈도우')
-        new Option('집합')
-        new Option('비트연산')
-        new Option('구현')
-        new Option('기타')
+        if (this.id === 'level') {
+          new Option('###', 'default')
+          new Option('Lv1')
+          new Option('Lv2')
+          new Option('Lv3')
+          new Option('Lv4')
+          new Option('Lv5')
+        }
 
+        else if (this.id === 'types') {
+          new Option('###', 'default')
+          new Option('해시')
+          new Option('스택큐')
+          new Option('DFSBFS')
+          new Option('힙')
+          new Option('완전탐색')
+          new Option('그리디')
+          new Option('다이나믹')
+          new Option('트리')
+          new Option('그래프')
+          new Option('투포인터슬라이딩윈도우')
+          new Option('집합')
+          new Option('비트연산')
+          new Option('구현')
+          new Option('###')
+        }
+
+        else if (this.id === 'language') {
+          new Option('###', 'default')
+          new Option('py')
+          new Option('js')
+        }
         this.$wrapper.append(this.$label)
         this.$wrapper.append(this.$select)
         $list.prepend(this.$wrapper)
@@ -209,13 +229,14 @@
       }
     }
 
-    new Input('language', '언어: ', 'py or js')
+    new Select('language', '언어: ')
     new Input('uploader', '업로더 이름: ', '머쓱')
     new Select('types', '문제 유형: ')
     new Input('problem', '문제 제목: ', '머쓱이의 방황')
     new Input('company', '회사 or 출제사이트: ', '프로그래머스')
     new Input('year', '출제년도: ', '0000')
-    new Input('level', '프로그래머스 기준 레벨: ', 'Lv0')
+    new Select('level', '프로그래머스 기준 레벨: ')
+
     new Info()
 
     $form.addEventListener('submit', e => {
@@ -239,12 +260,13 @@
     }
 
     setValues = (values) => {
+
       [...$form].forEach((v, i) => v.value = values.slice(0, -1)[i])
     }
 
     getValues = () => {
       const values = JSON.parse(localStorage.getItem('algoview'))
-      setValues(values)
+      if (values) setValues(values)
     }
 
     document.onload = getValues()
