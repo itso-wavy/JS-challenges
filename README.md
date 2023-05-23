@@ -2,6 +2,8 @@
 
 in this repo...
 
+- [algoviewTrimmer 🔗](https://itso-wavy.github.io/JS-challenges/algoviewTrimmer/index.html)
+
 - [Currencyformatter 🔗](https://itso-wavy.github.io/JS-challenges/Currencyformatter/index.html)
   [README](https://github.com/itso-wavy/JS-challenges/tree/main/Currencyformatter)
 
