@@ -261,8 +261,6 @@
       e.preventDefault();
       const values = [...e.target].map(i => i.value)
       const [level, year, company, problem, types, uploader, language] = values
-      console.log(' '.charCodeAt());
-      console.log(' '.charCodeAt());
       $display.textContent = `${level}_${year}_${company}_${problem}_${types}_${uploader}.${language}`.replaceAll(/[  ]/g, '')
       localStorage.setItem('algoview', JSON.stringify(values))
 
