@@ -1,0 +1,121 @@
+section{
+  margin: 0 50px;
+  background: rgb(190, 253, 224);
+}
+
+.primary-header {
+  --_bg: hsl(0 0% 100%);
+  --_logo-color: hsl(0, 0%, 5%);
+  --_nav-link-color: hsl(37, 82%, 20%);
+
+  padding: 1rem;
+  /* position: sticky; */
+  top: 0;
+  background: var(--_bg);
+}
+
+.primary-header,
+.primary-header * {
+  transition: 500ms;
+}
+
+.primary-header.sticking {
+  --_bg: #333;
+  --_logo-color: #fff;
+  --_nav-link-color: #f00;
+}
+
+.primary-header__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.primary-header a {
+  color: var(--_nav-link-color);
+}
+
+.primary-header a:hover,
+.primary-header a:focus {
+  opacity: 0.7;
+}
+
+.logo {
+  color: var(--_logo-color);
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  gap: clamp(0.5rem, 5vw, 2rem);
+}
+
+:root {
+  /* either --dark-mode or --no-dark-mode */
+  --color-scheme: var(--dark-mode);
+
+  --font-family: system-ui;
+
+  --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
+  --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
+  --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
+  --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
+  --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
+  --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
+  --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
+
+  --clr-primary-300: hsl(219, 76%, 55%);
+  --clr-primary-400: hsl(219, 76%, 40%);
+  --clr-primary-500: hsl(219, 76%, 25%);
+  --clr-secondary-300: hsl(269, 75%, 55%);
+  --clr-secondary-400: hsl(269, 75%, 40%);
+  --clr-secondary-500: hsl(269, 75%, 25%);
+  --clr-accent-300: hsl(358, 72%, 65%);
+  --clr-accent-400: hsl(358, 72%, 50%);
+  --clr-accent-500: hsl(358, 72%, 35%);
+
+  /* settings */
+  --no-dark-mode: light;
+  --dark-mode: dark light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+}
+
+.wrapper {
+  width: min(65rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.site-title {
+  font-size: var(--fs-900);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: var(--fs-800);
+  line-height: 1.1;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
