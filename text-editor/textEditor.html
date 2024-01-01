@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <style>
+    .toolbar {
+      border: 1px solid;
+    }
+
+    #menu {
+      display: flex;
+      justify-content: center;
+      padding: 5px;
+      background-color: lightgray;
+      border-bottom: 2px solid gray;
+    }
+
+    #menu>div:not(:last-child) {
+      margin-right: 20px;
+    }
+  </style>
+  <title>Text Editor</title>
+</head>
+<body>
+  <div class="toolbar">
+    <div id="menu">
+      <div>
+        <button data-command="h1">H1</button>
+        <button data-command="h2">H2</button>
+        <button data-command="h3">H3</button>
+        <button data-command="p">P</button>
+      </div>
+
+      <div>
+        <button data-command="bold">
+          <i class="fa fa-bold"></i>
+        </button>
+        <button data-command="italic">
+          <i class="fa fa-italic"></i>
+        </button>
+        <button data-command="underline">
+          <i class="fa fa-underline"></i>
+        </button>
+        <button data-command="strikeThrough">
+          <i class="fa fa-strikethrough"></i>
+        </button>
+      </div>
+
+      <div>
+        <button data-command="justifyLeft">
+          <i class="fa fa-align-left"></i>
+        </button>
+        <button data-command="justifyCenter">
+          <i class="fa fa-align-center"></i>
+        </button>
+        <button data-command="justifyRight">
+          <i class="fa fa-align-right"></i>
+        </button>
+        <button data-command="justifyFull">
+          <i class="fa fa-align-justify"></i>
+        </button>
+      </div>
+    </div>
+    <!-- // 버튼 -->
+    <div class="editor" contenteditable="true">
+      <h1>simple editor</h1>
+      <p>에디터 사용해봐yo</p>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('#menu button').forEach($button => $button.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      const command = $button.dataset.command
+
+      if (command == 'h1' || command == 'h2' || command == 'h3' || command == 'p') {
+        document.execCommand('formatBlock', false, command)
+      }
+      else {
+        document.execCommand(command)
+      }
+    }))
+
+  </script>
+</body>
+</html>
