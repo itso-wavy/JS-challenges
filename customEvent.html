@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>custom event</title>
+  <style>
+    .alert {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .alert p {
+      margin: 2px;
+    }
+
+    .alert .close {
+      position: absolute;
+      right: 10px;
+      color: lightblue;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="order-area">선택상품: macbook m1
+    <button id="order-btn">주문하기</button>
+  </div>
+
+  <script>
+    const $orderBtn = document.querySelector('#order-btn');
+
+    function buildAlert(title, message) {
+      const $alert = document.createElement('div')
+      const id = Math.ceil(Math.random() * 1000)
+
+      $alert.className = 'alert'
+      $alert.id = id
+      $alert.innerHTML = `
+        <strong>${title}</strong>
+        <span class="close">&times;</span>
+        <p>${message}</p>`
+
+      $alert.querySelector('span.close')
+        .addEventListener('click', () => {
+          const closeEvt = new CustomEvent('close', {
+            bubbles: true,
+            detail: { id, message }
+          })
+
+          $alert.dispatchEvent(closeEvt)
+          $alert.remove()
+        })
+
+      document.body.prepend($alert)
+
+      return $alert
+    }
+
+    $orderBtn.addEventListener('click', () => {
+      const $alertEle = buildAlert('ERROR', '에러가 발생했습니다!')
+
+      $alertEle.addEventListener('close', e => {
+        console.log(e.detail)
+        console.log('안내창을 닫았습니다')
+      })
+    })
+  </script>
+</body>
+</html>
