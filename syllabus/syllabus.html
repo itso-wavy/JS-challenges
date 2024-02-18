@@ -29,6 +29,24 @@
       }
     }
 
+    button {
+      border: none;
+      background: var(--theme2);
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px 8px;
+      margin-bottom: 3px;
+      border-radius: 8px;
+
+      &:hover {
+        filter: invert(.1);
+      }
+
+      &:focus {
+        filter: brightness(.85);
+      }
+    }
+
     .container {
       margin: auto;
       width: max(40vw, 48ch);
@@ -65,6 +83,13 @@
       font-size: 1.1em;
       border-bottom: 1px solid gray;
     }
+
+    #restTime {
+      font-weight: 600;
+      font-size: .9em;
+      margin-left: 5px;
+      color: gray;
+    }
   </style>
 </head>
 <body>
@@ -72,7 +97,9 @@
     <div class="info-box">
       <h1>Next js</h1>
       <p class="info">> 16개 섹션 • 359개의 강의 • 총 길이: 32시간 40분</p>
-      <p class="info">> 누적 학습: <input id="study-hour" type="text"><label for="study-hour">시간</label> <input id="study-minute" type="text"><label for="study-minute">분</label></p>
+      <div><button class="info" id="calcRestTime">남은 시간 계산</button>
+        <span id="restTime"></span>
+      </div>
     </div>
     <h2>section 3: next 핵심(app router)
       <br>
@@ -87,16 +114,14 @@
     const LOCAL_KEY = {
       timetable: 'timetable',
       studied: 'studied',
-      studyTime: 'studyTime'
     }
 
     document.addEventListener('DOMContentLoaded', function () {
       const checklistItems = JSON.parse(localStorage.getItem(LOCAL_KEY.timetable)) || checklistData;
-      const studyTime = JSON.parse(localStorage.getItem(LOCAL_KEY.studyTime)) || { hour: '0', minute: '0' };
 
       const $checklist = document.getElementById('checklist');
-      const $hourInput = document.getElementById('study-hour');
-      const $minuteInput = document.getElementById('study-minute');
+      const $remainingTime = document.getElementById('restTime');
+      const $calcTimeBtn = document.getElementById('calcRestTime');
 
       checklistItems.forEach((item, index) => {
         const listItem = document.createElement('li');
@@ -130,35 +155,39 @@
           }
           checklistItems[index].checked = checkbox.checked
           checklistItems[index].studied = studied
-          localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
         });
         $checklist.appendChild(listItem);
 
         memo.addEventListener('input', () => {
           const studied = memo.value
-
           checklistItems[index].studied = studied
-          localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
         })
       });
 
-      function inputUpdate(e) {
-        const studyTime = { hour: $hourInput.value, minute: $minuteInput.value }
+      function calcRestTime() {
+        let totalHours = 0;
+        let totalMinutes = 0;
 
-        localStorage.setItem(LOCAL_KEY.studyTime, JSON.stringify(studyTime))
+        checklistItems.forEach(item => {
+          if (!item.checked) {
+            const [minutes, seconds] = item.duration.split(':');
+            totalMinutes += parseInt(minutes);
+            totalMinutes += parseInt(seconds) / 60;
+          }
+        });
+
+        totalHours += Math.floor(totalMinutes / 60);
+        totalMinutes %= 60;
+
+        $remainingTime.textContent = `${totalHours}시간 ${totalMinutes.toFixed(2)}분`;
       }
+      calcRestTime()
+      $calcTimeBtn.addEventListener('click', calcRestTime);
 
-      $hourInput.value = studyTime.hour
-      $minuteInput.value = studyTime.minute
-
-      $hourInput.addEventListener('input', inputUpdate);
-      $minuteInput.addEventListener('input', inputUpdate);
-
-      // window.addEventListener('beforeunload', function () {
-      //   localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
-      // });
+      window.addEventListener('beforeunload', function () {
+        localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
+      });
     });
-
   </script>
 </body>
 </html>
