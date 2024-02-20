@@ -29,7 +29,7 @@
       }
     }
 
-    button {
+    /* button {
       border: none;
       background: var(--theme2);
       font-family: inherit;
@@ -45,7 +45,7 @@
       &:focus {
         filter: brightness(.85);
       }
-    }
+    } */
 
     .container {
       margin: auto;
@@ -84,11 +84,24 @@
       border-bottom: 1px solid gray;
     }
 
-    #restTime {
+    /* span#restTime {
       font-weight: 600;
       font-size: .9em;
       margin-left: 5px;
       color: gray;
+    } */
+    #checklist {
+      margin-bottom: 50px;
+    }
+
+    #restTime {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      padding: 20px 30px;
+      margin: 10px;
+      background: var(--theme);
+      font-weight: 600;
     }
   </style>
 </head>
@@ -97,9 +110,10 @@
     <div class="info-box">
       <h1>Next js</h1>
       <p class="info">> 16개 섹션 • 359개의 강의 • 총 길이: 32시간 40분</p>
-      <div><button class="info" id="calcRestTime">남은 시간 계산</button>
+      <!-- <div>
+        <button class="info" id="calcRestTime">남은 시간 계산</button>
         <span id="restTime"></span>
-      </div>
+      </div> -->
     </div>
     <h2>section 3: next 핵심(app router)
       <br>
@@ -107,7 +121,7 @@
     </h2>
     <ul id="checklist"></ul>
   </div>
-
+  <div id="restTime"></div>
   <script src="./data.js"></script>
   <script>
     const checklistData = section3
@@ -122,6 +136,24 @@
       const $checklist = document.getElementById('checklist');
       const $remainingTime = document.getElementById('restTime');
       const $calcTimeBtn = document.getElementById('calcRestTime');
+
+      function calcRestTime() {
+        let totalHours = 0;
+        let totalMinutes = 0;
+
+        checklistItems.forEach(item => {
+          if (!item.checked) {
+            const [minutes, seconds] = item.duration.split(':');
+            totalMinutes += parseInt(minutes);
+            totalMinutes += parseInt(seconds) / 60;
+          }
+        });
+
+        totalHours += Math.floor(totalMinutes / 60);
+        totalMinutes %= 60;
+
+        $remainingTime.textContent = `${totalHours}시간 ${totalMinutes.toFixed(2)}분`;
+      }
 
       checklistItems.forEach((item, index) => {
         const listItem = document.createElement('li');
@@ -155,6 +187,8 @@
           }
           checklistItems[index].checked = checkbox.checked
           checklistItems[index].studied = studied
+
+          calcRestTime()
         });
         $checklist.appendChild(listItem);
 
@@ -164,25 +198,9 @@
         })
       });
 
-      function calcRestTime() {
-        let totalHours = 0;
-        let totalMinutes = 0;
-
-        checklistItems.forEach(item => {
-          if (!item.checked) {
-            const [minutes, seconds] = item.duration.split(':');
-            totalMinutes += parseInt(minutes);
-            totalMinutes += parseInt(seconds) / 60;
-          }
-        });
-
-        totalHours += Math.floor(totalMinutes / 60);
-        totalMinutes %= 60;
-
-        $remainingTime.textContent = `${totalHours}시간 ${totalMinutes.toFixed(2)}분`;
-      }
       calcRestTime()
-      $calcTimeBtn.addEventListener('click', calcRestTime);
+
+      // $calcTimeBtn.addEventListener('click', calcRestTime);
 
       window.addEventListener('beforeunload', function () {
         localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
