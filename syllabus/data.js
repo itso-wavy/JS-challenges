@@ -85,3 +85,31 @@ const section3 = [
   { episode: '동적 메타데이터 추가', duration: '02:20' },
   { episode: '모듈 요약', duration: '04:25' },
 ];
+
+const section4 = [
+  { episode: 'App Router에서 Page Router까지', duration: '01:38' },
+  { episode: '코드 스냅샷 사용하기', duration: '00:31' },
+  { episode: '모듈 개요', duration: '01:12' },
+  { episode: '시작 설정', duration: '01:19' },
+  {
+    episode: '“파일 기반 라우팅”이란 무엇인가? 이게 왜 유용한 걸까?',
+    duration: '05:22',
+  },
+  { episode: '첫 번째 페이지 추가하기', duration: '04:01' },
+  { episode: '이름이 붙은 / 정적 라우트 파일 추가하기', duration: '01:34' },
+  { episode: '중첩 경로 & 라우트로 작업하기', duration: '03:33' },
+  { episode: '동적 경로 & 라우트 추가하기', duration: '04:54' },
+  {
+    episode: '동적 경로 세그먼트 데이터 추출하기 (동적 라우트)',
+    duration: '04:54',
+  },
+  { episode: '중첩된 동적 라우트 & 경로 구축하기', duration: '07:12' },
+  { episode: 'Catch-All 라우트 추가하기', duration: '05:44' },
+  { episode: '“Link” 컴포넌트로 내비게이팅하기', duration: '05:44' },
+  { episode: '동적 라우트로 내비게이팅하기', duration: '03:41' },
+  { episode: 'Link Href를 설정하는 다른 방법', duration: '02:55' },
+  { episode: '프로그래밍 방식으로 내비게이팅하기', duration: '03:50' },
+  { episode: '커스텀 404 페이지 추가하기', duration: '01:35' },
+  { episode: '모듈 요약', duration: '05:51' },
+  { episode: '모듈 리소스', duration: '00:33' },
+];

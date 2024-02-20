@@ -29,24 +29,6 @@
       }
     }
 
-    /* button {
-      border: none;
-      background: var(--theme2);
-      font-family: inherit;
-      font-size: inherit;
-      padding: 5px 8px;
-      margin-bottom: 3px;
-      border-radius: 8px;
-
-      &:hover {
-        filter: invert(.1);
-      }
-
-      &:focus {
-        filter: brightness(.85);
-      }
-    } */
-
     .container {
       margin: auto;
       width: max(40vw, 48ch);
@@ -84,12 +66,6 @@
       border-bottom: 1px solid gray;
     }
 
-    /* span#restTime {
-      font-weight: 600;
-      font-size: .9em;
-      margin-left: 5px;
-      color: gray;
-    } */
     #checklist {
       margin-bottom: 50px;
     }
@@ -103,6 +79,31 @@
       background: var(--theme);
       font-weight: 600;
     }
+
+    .info-box div:has(#reset) {
+      display: flex;
+      flex-flow: row-reverse;
+
+    }
+
+    #reset {
+      border: none;
+      background: whitesmoke;
+      color: var(--theme3);
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px 8px;
+      margin-bottom: 3px;
+      border-radius: 8px;
+
+      &:hover {
+        filter: invert(.1);
+      }
+
+      &:focus {
+        filter: brightness(.85);
+      }
+    }
   </style>
 </head>
 <body>
@@ -110,32 +111,30 @@
     <div class="info-box">
       <h1>Next js</h1>
       <p class="info">> 16개 섹션 • 359개의 강의 • 총 길이: 32시간 40분</p>
-      <!-- <div>
-        <button class="info" id="calcRestTime">남은 시간 계산</button>
-        <span id="restTime"></span>
-      </div> -->
+      <div>
+        <button class="info" id="reset">기록 초기화</button>
+      </div>
     </div>
-    <h2>section 3: next 핵심(app router)
+    <h2>section 4: page & file based routing
       <br>
-      <em>( 4h 5m, 48 class )</em>
+      <em>( 1h 6m, 19 class )</em>
     </h2>
     <ul id="checklist"></ul>
   </div>
   <div id="restTime"></div>
   <script src="./data.js"></script>
   <script>
-    const checklistData = section3
+    const checklistData = section4
     const LOCAL_KEY = {
       timetable: 'timetable',
-      studied: 'studied',
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      const checklistItems = JSON.parse(localStorage.getItem(LOCAL_KEY.timetable)) || checklistData;
+      let checklistItems = JSON.parse(localStorage.getItem(LOCAL_KEY.timetable)) || checklistData;
 
       const $checklist = document.getElementById('checklist');
       const $remainingTime = document.getElementById('restTime');
-      const $calcTimeBtn = document.getElementById('calcRestTime');
+      const $resetBtn = document.getElementById('reset');
 
       function calcRestTime() {
         let totalHours = 0;
@@ -200,7 +199,20 @@
 
       calcRestTime()
 
-      // $calcTimeBtn.addEventListener('click', calcRestTime);
+      $resetBtn.addEventListener('click', () => {
+        localStorage.removeItem(LOCAL_KEY.timetable);
+
+        checklistItems = checklistData;
+
+        checklistItems.forEach(item => {
+          item.checked = false;
+          item.studied = '';
+        });
+
+        localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistData));
+
+        location.reload();
+      });
 
       window.addEventListener('beforeunload', function () {
         localStorage.setItem(LOCAL_KEY.timetable, JSON.stringify(checklistItems));
