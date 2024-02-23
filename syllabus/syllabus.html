@@ -109,14 +109,13 @@
 <body>
   <div class="container">
     <div class="info-box">
-      <h1>Next js</h1>
-      <p class="info">> 16개 섹션 • 359개의 강의 • 총 길이: 32시간 40분</p>
+      <h1 id="subject"></h1>
+      <p class="info" id="info"></p>
       <div>
         <button class="info" id="reset">기록 초기화</button>
       </div>
     </div>
-    <h2>section 4: page & file based routing
-      <br>
+    <h2 id="section"><br>
       <em>( 1h 6m, 19 class )</em>
     </h2>
     <ul id="checklist"></ul>
@@ -124,27 +123,44 @@
   <div id="restTime"></div>
   <script src="./data.js"></script>
   <script>
-    const checklistData = section4
+    const TARGET = {
+      // subject: nextjs,
+      subject: typescript,
+      section: 'sec12'
+    }
     const LOCAL_KEY = {
       timetable: 'timetable',
     }
 
+    const { title, info, curriculum } = TARGET.subject[TARGET.section]
+    const checklistData = curriculum
+
     document.addEventListener('DOMContentLoaded', function () {
       let checklistItems = JSON.parse(localStorage.getItem(LOCAL_KEY.timetable)) || checklistData;
 
+      const $subjectTitle = document.getElementById('subject');
+      const $subjectInfo = document.getElementById('info');
+      const $sectionTitle = document.getElementById('section');
       const $checklist = document.getElementById('checklist');
       const $remainingTime = document.getElementById('restTime');
       const $resetBtn = document.getElementById('reset');
+
+      $subjectTitle.textContent = TARGET.subject.title
+      $subjectInfo.textContent = '> ' + TARGET.subject.info
+      $sectionTitle.innerHTML = info ? TARGET.subject[TARGET.section].title + `<br>
+      <em>( ${info} )</em>` : TARGET.subject[TARGET.section].title
 
       function calcRestTime() {
         let totalHours = 0;
         let totalMinutes = 0;
 
         checklistItems.forEach(item => {
-          if (!item.checked) {
+          if (!item.checked && item.duration) {
             const [minutes, seconds] = item.duration.split(':');
-            totalMinutes += parseInt(minutes);
-            totalMinutes += parseInt(seconds) / 60;
+            if (minutes && seconds) {
+              totalMinutes += parseInt(minutes);
+              totalMinutes += parseInt(seconds) / 60;
+            }
           }
         });
 
@@ -163,7 +179,7 @@
         checkbox.type = 'checkbox';
         checkbox.checked = item.checked;
         checkbox.id = `check${index}`
-        label.innerHTML = `${item.episode} (<strong class="info">${item.duration}</strong>)`;
+        label.innerHTML = item.duration ? `${item.episode} (<strong class="info">${item.duration}</strong>)` : item.episode
         label.htmlFor = checkbox.id
         memo.className = 'time-memo'
         memo.value = item.studied || ''
