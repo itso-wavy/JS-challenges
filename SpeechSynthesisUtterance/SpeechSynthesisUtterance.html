@@ -1,0 +1,79 @@
+<html>
+<head>
+  <title>TextInput for SpeechSynthesisUtterance</title>
+  <style>
+    body {
+      background: #F9F5E9;
+      color: #111;
+      font-family: "Sitka Text", 'KoPub Batang', Georgia, Cambria, Calibri, serif;
+      font-size: 114%;
+    }
+
+    #display p {
+      margin: .6em;
+    }
+
+    div:has(textarea) {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: .5em;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <textarea type="text" id="myInput" cols="50" rows="2"></textarea>
+    <button type="button" onclick="transform()">변환</button>
+  </div>
+
+  <div id="display" onclick="selectText(this)">
+    <p>그러면 백엔드부터 시작하겠습니다</p>
+    <p>server.js 파일을 볼게요</p>
+    <p>결국 Node/Express 서버라고 할 수 있는데 Node와 Express에서 한 가지 중요한 것은</p>
+    <p>예를 들어 PHP와 달리 Node 애플리케이션 구축 시</p>
+  </div>
+
+  <script>
+    let clickStatue = false
+
+    function transform() {
+      const $textarea = document.getElementById('myInput');
+      const $display = document.getElementById('display');
+
+      $display.innerText = '';
+
+      const lines = $textarea.value.split(/(?<=다|요)\n/)
+      console.log('lines: ', lines);
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i] !== '') {
+          const $p = document.createElement('p');
+          $p.textContent = lines[i];
+          $display.appendChild($p);
+        }
+      }
+
+      $textarea.value = '';
+    }
+
+    function selectText($element) {
+      if (!clickStatue) {
+        if (document.selection) {
+          const range = document.body.createTextRange();
+          range.moveToElementText($element);
+          range.select();
+        } else if (window.getSelection) {
+          const range = document.createRange();
+          range.selectNode($element);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        }
+        clickStatue = true
+      } else {
+        clickStatue = false
+      }
+    }
+  </script>
+</body>
+</html>
