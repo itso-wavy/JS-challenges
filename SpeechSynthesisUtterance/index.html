@@ -29,12 +29,11 @@
     <button type="button" onclick="transform()">변환</button>
   </div>
 
-  <div id="display" onclick="selectText(this)">
+  <div id="display">
+    <!-- <div id="display" onclick="selectText(this)"> -->
   </div>
 
   <script>
-    let clickStatue = false
-
     function transform() {
       const $textarea = document.getElementById('myInput');
       const $display = document.getElementById('display');
@@ -54,22 +53,24 @@
       $textarea.value = '';
     }
 
-    function selectText($element) {
-      if (!clickStatue) {
-        if (document.selection) {
-          const range = document.body.createTextRange();
-          range.moveToElementText($element);
-          range.select();
-        } else if (window.getSelection) {
-          const range = document.createRange();
-          range.selectNode($element);
-          window.getSelection().removeAllRanges();
-          window.getSelection().addRange(range);
-        }
-        clickStatue = true
-      } else {
-        clickStatue = false
+    // let clickStatue = false
+
+    // function selectText($element) {
+    if (!clickStatue) {
+      if (document.selection) {
+        const range = document.body.createTextRange();
+        range.moveToElementText($element);
+        range.select();
+      } else if (window.getSelection) {
+        const range = document.createRange();
+        range.selectNode($element);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
       }
+      clickStatue = true
+    } else {
+      clickStatue = false
+    }
     }
   </script>
 </body>
