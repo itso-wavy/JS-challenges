@@ -56,22 +56,22 @@
     // let clickStatue = false
 
     // function selectText($element) {
-    if (!clickStatue) {
-      if (document.selection) {
-        const range = document.body.createTextRange();
-        range.moveToElementText($element);
-        range.select();
-      } else if (window.getSelection) {
-        const range = document.createRange();
-        range.selectNode($element);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-      }
-      clickStatue = true
-    } else {
-      clickStatue = false
-    }
-    }
+    // if (!clickStatue) {
+    //   if (document.selection) {
+    //     const range = document.body.createTextRange();
+    //     range.moveToElementText($element);
+    //     range.select();
+    //   } else if (window.getSelection) {
+    //     const range = document.createRange();
+    //     range.selectNode($element);
+    //     window.getSelection().removeAllRanges();
+    //     window.getSelection().addRange(range);
+    //   }
+    //   clickStatue = true
+    // } else {
+    //   clickStatue = false
+    // }
+    // }
   </script>
 </body>
 </html>
